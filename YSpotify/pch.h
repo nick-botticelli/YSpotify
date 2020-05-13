@@ -10,4 +10,16 @@
 // add headers that you want to pre-compile here
 #include "framework.h"
 
+#include <fstream>
+#include <iostream>
+#include <regex>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#include <thread>
+#include <vector>
+
+// OpenSSL
+//#include <openssl/evp.h>
+
 #endif //PCH_H
