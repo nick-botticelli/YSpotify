@@ -5,7 +5,11 @@ namespace Hooks
 {
 	void HookHandler::InitHooks()
 	{
-		Hooks::LoggingHook::CreateHook();
 		Hooks::UpdateHook::CreateHook();
+		Hooks::KeyHook::CreateHook();
+
+		// Do LoggingHook last
+		Hooks::LoggingHook::CreateHook();
+		std::cout << std::endl;
 	}
 }

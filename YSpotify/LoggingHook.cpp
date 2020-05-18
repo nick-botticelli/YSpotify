@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "LoggingHook.h"
 #include "HookUtil.h"
-#include "HookAddresses.h"
+#include "SpotifyUtil.h"
 
 namespace Hooks
 {
@@ -76,7 +76,7 @@ namespace Hooks
 	{
 		std::cout << "Creating LoggingHook..." << std::endl;
 
-		switch (Hooks::HookAddresses::getSpotifyVersion())
+		switch (Utils::SpotifyUtil::getSpotifyVersion())
 		{
 		case 25:
 			//oSub_108BB10 = (tSub_108BB10)Utils::HookUtil::TrampHook32((char*)0x0108BB24, (char*)&log_hook_v25, 6);

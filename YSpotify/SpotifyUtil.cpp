@@ -1,11 +1,12 @@
 #include "pch.h"
-#include "HookAddresses.h"
+#include "SpotifyUtil.h"
 
-namespace Hooks
+namespace Utils
 {
 	int spotifyVer = -1; // e.g. "25" == 1.1.25.559
+	std::string decryptionIV = "null";
 
-	int HookAddresses::getSpotifyVersion()
+	int SpotifyUtil::getSpotifyVersion()
 	{
 		if (spotifyVer != -1)
 			return spotifyVer;
@@ -29,5 +30,38 @@ namespace Hooks
 		printf("Your Spotify version: %d.%d.%d.%d\n", dwLeftMost, dwSecondLeft, dwSecondRight, dwRightMost);
 
 		return spotifyVer = (int)dwSecondRight;
+	}
+
+	std::string SpotifyUtil::getDecryptionIV()
+	{
+		if (decryptionIV.compare("null") != 0)
+			return decryptionIV;
+
+		switch (Utils::SpotifyUtil::getSpotifyVersion())
+		{
+		case 25:
+			unsigned int ivKeyAddr = 0xC8F325;
+			unsigned char ivBuffer[16] = { 0 };
+			char ivStr[33] = { 0 };
+
+			// Copy the IV from the text segment of Spotify (4 byte segments split by 3 bytes of opcodes)
+			int correctedIndex = 0;
+			for (int i = 0; i < 25; i++)
+			{
+				if ((i < 4 || i > 6) && (i < 11 || i > 13) && (i < 18 || i > 20)) // Skip opcodes
+					ivBuffer[correctedIndex] = *(char*)((DWORD)ivKeyAddr + i);
+				else
+					correctedIndex--;
+
+				correctedIndex++;
+			}
+
+			for (int i = 0; i < 16; i++)
+				sprintf(ivStr + i * 2, "%02X", ivBuffer[i]);
+
+			return decryptionIV = std::string(ivStr);
+		}
+
+		return "null";
 	}
 }

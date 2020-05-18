@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "LoggingHook.h"
 #include "HookUtil.h"
-#include "HookAddresses.h"
+#include "SpotifyUtil.h"
 #include "UpdateHook.h"
 
 namespace Hooks
@@ -13,7 +13,7 @@ namespace Hooks
 
 	void UpdateHook::CreateHook()
 	{
-		switch (Hooks::HookAddresses::getSpotifyVersion())
+		switch (Utils::SpotifyUtil::getSpotifyVersion())
 		{
 		case 25:
 			Utils::HookUtil::Detour32((char*)0x56CE1A, (char*)&disableUpdates_hook_v25, 5); // 0x00FFF9F0 = black screen on startup

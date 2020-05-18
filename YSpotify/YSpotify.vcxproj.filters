@@ -45,10 +45,13 @@
     <ClInclude Include="LoggingHook.h">
       <Filter>Header Files\hooks</Filter>
     </ClInclude>
-    <ClInclude Include="HookAddresses.h">
+    <ClInclude Include="UpdateHook.h">
       <Filter>Header Files\hooks</Filter>
     </ClInclude>
-    <ClInclude Include="UpdateHook.h">
+    <ClInclude Include="SpotifyUtil.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyHook.h">
       <Filter>Header Files\hooks</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,10 +74,13 @@
     <ClCompile Include="LoggingHook.cpp">
       <Filter>Source Files\hooks</Filter>
     </ClCompile>
-    <ClCompile Include="HookAddresses.cpp">
+    <ClCompile Include="UpdateHook.cpp">
       <Filter>Source Files\hooks</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateHook.cpp">
+    <ClCompile Include="SpotifyUtil.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyHook.cpp">
       <Filter>Source Files\hooks</Filter>
     </ClCompile>
   </ItemGroup>
