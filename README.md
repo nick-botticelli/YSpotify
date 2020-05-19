@@ -19,9 +19,9 @@ This project uses [vcpkg](https://github.com/microsoft/vcpkg) to manage dependen
 
 # Notes
 * As of now, 1.1.31 (newest) is not supported; 1.1.30 can be installed through the official installer located [here](https://download.spotify.com/SpotifyFullSetup.exe).
-* I have almost no C++ coding experience, a lot of this is StackOverflow'd and copy-pasted. Feel free to create a PR.
+* I have almost no C++ coding experience. Feel free to create a PR, but I want to keep this project simple for me.
 * Research is my own (+ some of meik97's research)
-* Tools used for research: IDA Pro, Cheat Engine, and Windbg
+* Tools used for research: IDA Pro, Ghidra, Cheat Engine, and Windbg
 * Currently for Spotify 1.1.25 - 1.1.30 only
 
 # Spotify Updates
