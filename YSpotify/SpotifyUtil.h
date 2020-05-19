@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Utils
+namespace utils
 {
 	class SpotifyUtil
 	{
@@ -10,6 +10,7 @@ namespace Utils
 
 		static int getSpotifyVersion();
 		static std::string getDecryptionIV();
+		static std::string getDecryptionIV_Legacy();
 	};
 }
 

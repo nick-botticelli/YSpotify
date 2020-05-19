@@ -76,15 +76,13 @@ namespace Hooks
 	{
 		std::cout << "Creating LoggingHook..." << std::endl;
 
-		switch (Utils::SpotifyUtil::getSpotifyVersion())
+		switch (utils::SpotifyUtil::getSpotifyVersion())
 		{
 		case 25:
-			//oSub_108BB10 = (tSub_108BB10)Utils::HookUtil::TrampHook32((char*)0x0108BB24, (char*)&log_hook_v25, 6);
-			//Utils::HookUtil::Detour32((char*)0x745db0, (char*)&enableSkips_hook_v25, 5);
-			oSub_108BC70 = (tSub_108BC70)Utils::HookUtil::TrampHook32((char*)0x0108BC70, (char*)&log2_hook_v25, 5);
+			oSub_108BC70 = (tSub_108BC70)utils::HookUtil::TrampHook32((char*)0x0108BC70, (char*)&log2_hook_v25, 5);
 			break;
 		case 30:
-			oSub_10B3C60 = (tSub_10B3C60)Utils::HookUtil::TrampHook32((char*)/*0x010B3C71*/ 0x010B3D77, (char*)&log_hook_v30, /*6*/ 7);
+			//oSub_10B3C60 = (tSub_10B3C60)utils::HookUtil::TrampHook32((char*)/*0x010B3C71*/ 0x010B3D77, (char*)&log_hook_v30, /*6*/ 7);
 			break;
 		}
 

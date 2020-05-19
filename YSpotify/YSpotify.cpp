@@ -16,11 +16,11 @@ DWORD WINAPI Init(LPVOID lpParam)
 
 	std::cout << "=== YSpotify v" << VERSION << " ===" << std::endl;
 
-	int spotifyVer = Utils::SpotifyUtil::getSpotifyVersion();
-	if (spotifyVer < Utils::SpotifyUtil::SUPPORT_OLDEST)
-		std::cout << "Warning: Your spotify version appears to be too old! Please use 1.1." << Utils::SpotifyUtil::SUPPORT_OLDEST << " or higher." << std::endl;
-	else if (spotifyVer > Utils::SpotifyUtil::SUPPORT_NEWEST)
-		std::cout << "Warning: Your Spotify version appears to be too new! Please use 1.1." << Utils::SpotifyUtil::SUPPORT_NEWEST << " or older" << std::endl;
+	int spotifyVer = utils::SpotifyUtil::getSpotifyVersion();
+	if (spotifyVer < utils::SpotifyUtil::SUPPORT_OLDEST)
+		std::cout << "Warning: Your spotify version appears to be too old! Please use 1.1." << utils::SpotifyUtil::SUPPORT_OLDEST << " or higher." << std::endl;
+	else if (spotifyVer > utils::SpotifyUtil::SUPPORT_NEWEST)
+		std::cout << "Warning: Your Spotify version appears to be too new! Please use 1.1." << utils::SpotifyUtil::SUPPORT_NEWEST << " or older" << std::endl;
 	std::cout << std::endl;
 
 	Hooks::HookHandler::InitHooks();

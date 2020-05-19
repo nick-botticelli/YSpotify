@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "HookUtil.h"
 
-namespace Utils
+namespace utils
 {
 	bool HookUtil::Detour32(char* src, char* dst, const intptr_t len)
 	{

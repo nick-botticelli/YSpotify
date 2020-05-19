@@ -2,7 +2,7 @@
 #include "Hooks.h"
 #include "Utils.h"
 
-namespace Utils
+namespace utils
 {
 	void Utils::removeForbiddenChar(std::string* s)
 	{
@@ -72,5 +72,14 @@ namespace Utils
 		}
 
 		return nullptr;
+	}
+
+	MODULEINFO Utils::GetModuleInfo(char* szModule)
+	{
+		MODULEINFO modInfo = { 0 };
+		HMODULE hModule = GetModuleHandleA(szModule);
+		if (hModule != 0)
+			GetModuleInformation(GetCurrentProcess(), hModule, &modInfo, sizeof(MODULEINFO));
+		return modInfo;
 	}
 }

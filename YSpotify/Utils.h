@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
 
-namespace Utils
+namespace utils
 {
 	class Utils
 	{
@@ -10,5 +10,6 @@ namespace Utils
 		static std::string hex2string(std::string str);
 		static std::wstring ConvertUtf8ToUtf16(const std::string& str);
 		static const char* ScanIn(const char* pattern, const char* mask, const char* begin, unsigned int size);
+		static MODULEINFO GetModuleInfo(char* szModule);
 	};
 }

@@ -12,6 +12,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <Psapi.h>
 #include <regex>
 #include <sstream>
 #include <string>

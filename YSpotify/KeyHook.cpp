@@ -8,6 +8,6 @@ namespace Hooks
 {
 	void KeyHook::CreateHook()
 	{
-		std::cout << "Decryption IV: " << Utils::SpotifyUtil::getDecryptionIV() << std::endl;
+		std::cout << "Decryption IV: " << utils::SpotifyUtil::getDecryptionIV() << std::endl;
 	}
 }

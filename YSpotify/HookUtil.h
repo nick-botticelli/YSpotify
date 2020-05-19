@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
 
-namespace Utils
+namespace utils
 {
 	class HookUtil
 	{
