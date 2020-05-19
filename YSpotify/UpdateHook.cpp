@@ -17,6 +17,9 @@ namespace Hooks
 		{
 		case 25:
 			Utils::HookUtil::Detour32((char*)0x56CE1A, (char*)&disableUpdates_hook_v25, 5); // 0x00FFF9F0 = black screen on startup
+			break;
+		case 30:
+			break;
 		}
 	}
 }

@@ -50,4 +50,27 @@ namespace Utils
 
 		return convertedString;
 	}
+
+	const char* Utils::ScanIn(const char* pattern, const char* mask, const char* begin, unsigned int size)
+	{
+		unsigned int patternLength = strlen(mask);
+
+		for (unsigned int i = 0; i < size - patternLength; i++)
+		{
+			bool found = true;
+			for (unsigned int j = 0; j < patternLength; j++)
+			{
+				if (mask[j] != '?' && pattern[j] != *(begin + i + j))
+				{
+					found = false;
+					break;
+				}
+			}
+
+			if (found)
+				return (begin + i);
+		}
+
+		return nullptr;
+	}
 }

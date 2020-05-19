@@ -42,8 +42,10 @@ namespace Utils
 		{
 		case 25:
 			ivKeyAddr = 0xC8F325;
+			break;
 		case 30:
 			ivKeyAddr = 0xCA9170;
+			break;
 		}
 
 		unsigned char ivBuffer[16] = { 0 };
@@ -65,7 +67,5 @@ namespace Utils
 			sprintf(ivStr + i * 2, "%02X", ivBuffer[i]);
 
 		return decryptionIV = std::string(ivStr);
-
-		return "null";
 	}
 }
