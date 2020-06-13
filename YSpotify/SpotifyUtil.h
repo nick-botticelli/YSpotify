@@ -17,7 +17,9 @@ namespace utils
 			v1_1_30,
 			v1_1_31,
 			v1_1_32_39,
-			v1_1_32_41
+			v1_1_32_41,
+			v1_1_33,
+			v1_1_34
 		};
 
 		static const int SUPPORT_OLDEST = 25;

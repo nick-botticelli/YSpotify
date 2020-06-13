@@ -10,8 +10,8 @@ namespace Hooks
 	typedef int(__cdecl* loggerFunc_v25)(int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char* logMsgStr);
 	loggerFunc_v25 loggerFunc_v25_hook = nullptr;
 
-	// 1.1.27-7, 1.1.27-13
-	// Not the same function as loggerFunc
+	// 1.1.27-7, 1.1.27-13, 1.1.30, 1.1.34
+	// Not the same function as loggerFunc; sometimes gives a bad pointer for logMsgStr
 	typedef char(__thiscall* loggerFunc2_v27)(void* This, int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char** logMsgStr);
 	loggerFunc2_v27 loggerFunc_v27_hook = nullptr;
 
@@ -65,6 +65,10 @@ namespace Hooks
 			break;
 		case utils::SpotifyUtil::SpotifyVersion::v1_1_30:
 			//loggerFunc_v25_hook = (loggerFunc_v25)utils::HookUtil::TrampHook32((char*)/*0x010B3C71*/ 0x010B3D77, (char*)&log_hook_v30, /*6*/ 7);
+			loggerFunc_v27_hook = (loggerFunc2_v27)utils::HookUtil::TrampHook32((char*)0x010B0CF0, (char*)&log_hook_v27, 5);
+			break;
+		case utils::SpotifyUtil::SpotifyVersion::v1_1_34:
+			loggerFunc_v27_hook = (loggerFunc2_v27)utils::HookUtil::TrampHook32((char*)0x010BAD90, (char*)&log_hook_v27, 5);
 			break;
 		}
 
