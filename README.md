@@ -1,5 +1,5 @@
 # YSpotify
-Spotify hooking application inspired by XSpotify
+A WIP Spotify hooking application inspired by XSpotify
 
 # Installing
 This project uses [vcpkg](https://github.com/microsoft/vcpkg) to manage dependencies.

@@ -15,11 +15,6 @@ namespace Hooks
 	typedef char(__thiscall* loggerFunc2_v27)(void* This, int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char** logMsgStr);
 	loggerFunc2_v27 loggerFunc_v27_hook = nullptr;
 
-	int __cdecl LoggingHook::enableSkips_hook_v25(DWORD arg_0)
-	{
-		return 1;
-	}
-
 	int __cdecl LoggingHook::log_hook_v25(int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char* logMsgStr)
 	{
 		// std::cout << originStr << std::endl; // Origin class
