@@ -18,8 +18,8 @@ This project uses [vcpkg](https://github.com/microsoft/vcpkg) to manage dependen
 * openssl-windows:x86-windows-static
 
 # Notes
-* As of now, 1.1.31 (newest) is not supported; ~~1.1.30 can be installed through the official installer located [here](https://download.spotify.com/SpotifyFullSetup.exe).~~
-* I have almost no C++ coding experience. Feel free to create a PR, but I want to keep this project simple for me.
+* As of now, all features are based on 1.1.25, with varying support for future Spotify versions
+* I have almost no C++ coding experience. Feel free to create a PR.
 * Research is my own (+ some of meik97's research)
 * Tools used for research: IDA Pro, Ghidra, Cheat Engine, and Windbg
 * Currently for Spotify 1.1.25, with some functionality on 1.1.26, 1.1.27, and 1.1.30
