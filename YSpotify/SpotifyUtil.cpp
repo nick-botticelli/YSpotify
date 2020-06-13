@@ -67,8 +67,8 @@ namespace utils
 		char* base = (char*)mInfo.lpBaseOfDll;
 		unsigned int size = mInfo.SizeOfImage;
 
-		const char* iv_pattern = "\x72\xE0\x67\xFB\xC7\x45\xE4\xDD\xCB\xCF\x77\xC7\x45\xE8\xEB\xE8\xBC\x64\xC7\x45\xEC\x3F\x63\x0D\x93";
-		const char* iv_mask = "xxxx???xxxx???xxxx???xxxx"; // 25, let opcodes be wildcards to pattern match across different versions
+		const char* iv_pattern = "\x72\xE0\x67\xFB\xC7\x45\xE4\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00";
+		const char* iv_mask = "xxxxxxx??????????????????"; // 25, lots of wildcards so that Spotify won't yeet this for hardcoding the value
 		unsigned int iv_foundAddr = (unsigned int)utils::Utils::ScanIn(iv_pattern, iv_mask, (char*)base, size);
 
 		unsigned char ivBuffer[16] = { 0 };
