@@ -10,6 +10,8 @@ namespace utils
 		static std::string hex2string(std::string str);
 		static std::wstring ConvertUtf8ToUtf16(const std::string& str);
 		static const char* ScanIn(const char* pattern, const char* mask, const char* begin, unsigned int size);
+		static bool IsBadReadPtr(void* p);
 		static MODULEINFO GetModuleInfo(char* szModule);
+		static std::string GetFileMD5(const std::string& fname);
 	};
 }

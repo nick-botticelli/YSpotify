@@ -3,7 +3,7 @@
 #include "Hooks.h"
 #include "SpotifyUtil.h"
 
-static const char* VERSION = "0.2";
+static const char* VERSION = "0.3.1";
 
 DWORD WINAPI Init(LPVOID lpParam)
 {
@@ -16,12 +16,12 @@ DWORD WINAPI Init(LPVOID lpParam)
 
 	std::cout << "=== YSpotify v" << VERSION << " ===" << std::endl;
 
-	int spotifyVer = utils::SpotifyUtil::getSpotifyVersion();
+	/*int spotifyVer = utils::SpotifyUtil::getSpotifyVersion();
 	if (spotifyVer < utils::SpotifyUtil::SUPPORT_OLDEST)
 		std::cout << "Warning: Your spotify version appears to be too old! Please use 1.1." << utils::SpotifyUtil::SUPPORT_OLDEST << " or higher." << std::endl;
 	else if (spotifyVer > utils::SpotifyUtil::SUPPORT_NEWEST)
 		std::cout << "Warning: Your Spotify version appears to be too new! Please use 1.1." << utils::SpotifyUtil::SUPPORT_NEWEST << " or older" << std::endl;
-	std::cout << std::endl;
+	std::cout << std::endl;*/
 
 	Hooks::HookHandler::InitHooks();
 

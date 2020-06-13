@@ -11,6 +11,7 @@
 #include "framework.h"
 
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <Psapi.h>
 #include <regex>
@@ -21,6 +22,6 @@
 #include <vector>
 
 // OpenSSL
-//#include <openssl/evp.h>
+#include <openssl/md5.h>
 
 #endif //PCH_H

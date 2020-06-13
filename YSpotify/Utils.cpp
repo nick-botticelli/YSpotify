@@ -2,6 +2,8 @@
 #include "Hooks.h"
 #include "Utils.h"
 
+#define BUFFSIZE 1024
+
 namespace utils
 {
 	void Utils::removeForbiddenChar(std::string* s)
@@ -51,6 +53,7 @@ namespace utils
 		return convertedString;
 	}
 
+	// Internal scanner to match bytes in the program's memory. ? = wildcard
 	const char* Utils::ScanIn(const char* pattern, const char* mask, const char* begin, unsigned int size)
 	{
 		unsigned int patternLength = strlen(mask);
@@ -74,6 +77,23 @@ namespace utils
 		return nullptr;
 	}
 
+	// Returns true if the pointer points to an invalid address (e.g. unaccessible)
+	bool Utils::IsBadReadPtr(void* p)
+	{
+		MEMORY_BASIC_INFORMATION mbi = { 0 };
+		if (::VirtualQuery(p, &mbi, sizeof(mbi)))
+		{
+			DWORD mask = (PAGE_READONLY | PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY);
+			bool b = !(mbi.Protect & mask);
+			// check the page is not a guard page
+			if (mbi.Protect & (PAGE_GUARD | PAGE_NOACCESS)) b = true;
+
+			return b;
+		}
+
+		return true;
+	}
+
 	MODULEINFO Utils::GetModuleInfo(char* szModule)
 	{
 		MODULEINFO modInfo = { 0 };
@@ -81,5 +101,43 @@ namespace utils
 		if (hModule != 0)
 			GetModuleInformation(GetCurrentProcess(), hModule, &modInfo, sizeof(MODULEINFO));
 		return modInfo;
+	}
+
+	std::string Utils::GetFileMD5(const std::string& fname)
+	{
+		char buffer[BUFFSIZE];
+		unsigned char digest[MD5_DIGEST_LENGTH];
+
+		std::stringstream ss;
+		std::string md5string;
+
+		std::ifstream ifs(fname, std::ifstream::binary);
+
+		MD5_CTX md5Context;
+
+		MD5_Init(&md5Context);
+
+		while (ifs.good())
+		{
+			ifs.read(buffer, BUFFSIZE);
+			MD5_Update(&md5Context, buffer, ifs.gcount());
+		}
+
+		ifs.close();
+
+		int res = MD5_Final(digest, &md5Context);
+
+		if (res == 0) // hash failed
+			return {};   // or raise an exception
+
+		// set up stringstream format
+		ss << std::hex << std::uppercase << std::setfill('0');
+
+		for (unsigned char uc : digest)
+			ss << std::setw(2) << (int)uc;
+
+		md5string = ss.str();
+
+		return md5string;
 	}
 }
