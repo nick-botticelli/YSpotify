@@ -15,7 +15,7 @@ namespace Hooks
 	typedef char(__thiscall* loggerFunc2_v27)(void* This, int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char** logMsgStr);
 	loggerFunc2_v27 loggerFunc_v27_hook = nullptr;
 
-	int __cdecl LoggingHook::log_hook_v25(int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char* logMsgStr)
+	int __cdecl log_hook_v25(int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char* logMsgStr)
 	{
 		// std::cout << originStr << std::endl; // Origin class
 		std::cout << logMsgStr << std::endl; // Log message
@@ -23,7 +23,7 @@ namespace Hooks
 		return loggerFunc_v25_hook(intOne, intTwo, multiByteStrOffset, originStr, intThree, logMsgStr);
 	}
 
-	char __fastcall LoggingHook::log_hook_v27(void* This, void* _EDX, int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char** logMsgStr)
+	char __fastcall log_hook_v27(void* This, void* _EDX, int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char** logMsgStr)
 	{
 		if (!utils::Utils::IsBadReadPtr(*logMsgStr))
 			std::cout << *logMsgStr << std::endl; // Log message
@@ -59,7 +59,6 @@ namespace Hooks
 		case utils::SpotifyUtil::SpotifyVersion::v1_1_29:
 			break;
 		case utils::SpotifyUtil::SpotifyVersion::v1_1_30:
-			//loggerFunc_v25_hook = (loggerFunc_v25)utils::HookUtil::TrampHook32((char*)/*0x010B3C71*/ 0x010B3D77, (char*)&log_hook_v30, /*6*/ 7);
 			loggerFunc_v27_hook = (loggerFunc2_v27)utils::HookUtil::TrampHook32((char*)0x010B0CF0, (char*)&log_hook_v27, 5);
 			break;
 		case utils::SpotifyUtil::SpotifyVersion::v1_1_34:
