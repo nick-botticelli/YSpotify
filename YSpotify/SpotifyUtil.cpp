@@ -39,7 +39,7 @@ namespace utils
 		case 25:
 			return spotifyVer = SpotifyVersion::v1_1_25;
 		case 26: // Compare MD5 because both files have the same version
-			return spotifyVer = utils::Utils::GetFileMD5("Spotify.exe").compare("37521969B1FE967EB4762889C554C189") == 0 ? SpotifyVersion::v1_1_26_19 : SpotifyVersion::v1_1_26_21;
+			return spotifyVer = utils::Utils::getFileMD5("Spotify.exe").compare("37521969B1FE967EB4762889C554C189") == 0 ? SpotifyVersion::v1_1_26_19 : SpotifyVersion::v1_1_26_21;
 		case 27:
 			return spotifyVer = dwRightMost == 469 ? SpotifyVersion::v1_1_27_7 : SpotifyVersion::v1_1_27_13;
 		case 28:

@@ -12,11 +12,6 @@ namespace Hooks
 	typedef bool(__cdecl* parseUrlFunc_v25)(int* urlThingArg, int arg_4);
 	parseUrlFunc_v25 parseUrlFunc_v25_hook = nullptr;
 
-	/*int disableUpdates_hook_v25(DWORD arg_0, DWORD arg_4)
-	{
-		return 0;
-	}*/
-
 	int __fastcall update_hook_v25(void* This, void* _EDX, char* newVerStr, char** updateUrlStrPtr, int a4, int a5)
 	{
 		std::cout << "=== UPDATE REQUEST ===" << std::endl;
@@ -46,7 +41,6 @@ namespace Hooks
 		switch (utils::SpotifyUtil::getSpotifyVersion())
 		{
 		case utils::SpotifyUtil::SpotifyVersion::v1_1_25:
-			//utils::HookUtil::Detour32((char*)0x56CE1A, (char*)&disableUpdates_hook_v25, 5); // 0x00FFF9F0 = black screen on startup
 			//updateFunc_v25_hook = (updateFunc_v25)utils::HookUtil::TrampHook32((char*)0x0056CA30, (char*)&update_hook_v25, 5); // 00FFF9F0
 			parseUrlFunc_v25_hook = (parseUrlFunc_v25)utils::HookUtil::TrampHook32((char*)0x00FFF9F0, (char*)&parseUrl_hook_v25, 6);
 			break;

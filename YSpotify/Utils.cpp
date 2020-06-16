@@ -25,7 +25,7 @@ namespace utils
 		std::string res;
 		res.reserve(str.size() / 2);
 
-		for (int i = 0; i < str.size(); i += 2)
+		for (size_t i = 0; i < str.size(); i += 2)
 		{
 			std::istringstream iss(str.substr(i, 2));
 			int temp;
@@ -103,7 +103,7 @@ namespace utils
 		return modInfo;
 	}
 
-	std::string Utils::GetFileMD5(const std::string& fname)
+	std::string Utils::getFileMD5(const std::string& fname)
 	{
 		char buffer[BUFFSIZE];
 		unsigned char digest[MD5_DIGEST_LENGTH];

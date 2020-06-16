@@ -3,6 +3,7 @@
 
 namespace utils
 {
+	// Source: https://guidedhacking.com/threads/simple-x86-c-trampoline-hook.14188/
 	bool HookUtil::Detour32(char* src, char* dst, const intptr_t len)
 	{
 		if (len < 5) return false;
@@ -19,6 +20,7 @@ namespace utils
 		return true;
 	}
 
+	// Source: https://guidedhacking.com/threads/simple-x86-c-trampoline-hook.14188/
 	char* HookUtil::TrampHook32(char* src, char* dst, const intptr_t len)
 	{
 		// Make sure the length is greater than 5
