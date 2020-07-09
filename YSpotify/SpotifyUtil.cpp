@@ -54,6 +54,10 @@ namespace utils
 			return spotifyVer = SpotifyVersion::v1_1_33;
 		case 34:
 			return spotifyVer = SpotifyVersion::v1_1_34;
+		case 35:
+			return spotifyVer = SpotifyVersion::v1_1_35;
+		case 36:
+			return spotifyVer = SpotifyVersion::v1_1_36;
 		}
 
 		spotifyVerSet = true;
