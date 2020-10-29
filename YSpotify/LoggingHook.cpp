@@ -15,6 +15,10 @@ namespace Hooks
 	typedef char(__thiscall* loggerFunc2_v27)(void* This, int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char** logMsgStr);
 	loggerFunc2_v27 loggerFunc_v27_hook = nullptr;
 
+	// 1.1.34
+	typedef int(__cdecl* newLoggerFunc_v27)(int* a1, char** logMsgStr);
+	newLoggerFunc_v27 newLoggerFunc_v27_hook = nullptr;
+
 	int __cdecl log_hook_v25(int intOne, int intTwo, DWORD multiByteStrOffset, char* originStr, int intThree, char* logMsgStr)
 	{
 		// std::cout << originStr << std::endl; // Origin class
@@ -31,6 +35,14 @@ namespace Hooks
 			std::cout << originStr << std::endl; // Bad pointer... log origin class instead
 
 		return loggerFunc_v27_hook(This, intOne, intTwo, multiByteStrOffset, originStr, intThree, logMsgStr);
+	}
+
+	int __cdecl new_log_hook_v27(int* a1, char** logMsgStr)
+	{
+		if (!utils::Utils::IsBadReadPtr(logMsgStr) && !utils::Utils::IsBadReadPtr(*logMsgStr))
+			std::cout << *logMsgStr << std::endl; // Log message
+
+		return newLoggerFunc_v27_hook(a1, logMsgStr);
 	}
 
 	void LoggingHook::CreateHook()
@@ -62,7 +74,8 @@ namespace Hooks
 			loggerFunc_v27_hook = (loggerFunc2_v27)utils::HookUtil::TrampHook32((char*)0x010B0CF0, (char*)&log_hook_v27, 5);
 			break;
 		case utils::SpotifyUtil::SpotifyVersion::v1_1_34:
-			loggerFunc_v27_hook = (loggerFunc2_v27)utils::HookUtil::TrampHook32((char*)0x010BAD90, (char*)&log_hook_v27, 5);
+			//loggerFunc_v27_hook = (loggerFunc2_v27)utils::HookUtil::TrampHook32((char*)0x010BAD90, (char*)&log_hook_v27, 5);
+			newLoggerFunc_v27_hook = (newLoggerFunc_v27)utils::HookUtil::TrampHook32((char*)0x010B9110, (char*)&new_log_hook_v27, 5);
 			break;
 		}
 
